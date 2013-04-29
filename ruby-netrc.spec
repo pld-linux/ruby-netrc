@@ -15,7 +15,7 @@ URL:		https://github.com/geemus/netrc
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
 %if %{with tests}
-BuildRequires:	rubygem-minitest
+BuildRequires:	ruby-minitest
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -28,13 +28,14 @@ including comments and whitespace.
 Summary:	Documentation for %{name}
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
-BuildArch:	noarch
 
 %description doc
 Documentation for %{name}
 
 %prep
 %setup -q -n %{gem_name}-%{version}
+
+chmod 600 data/newlineless.netrc
 
 %build
 %if %{with tests}
