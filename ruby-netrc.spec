@@ -15,6 +15,7 @@ URL:		https://github.com/geemus/netrc
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
 %if %{with tests}
+BuildRequires:	gnupg
 BuildRequires:	ruby-minitest
 %endif
 BuildArch:	noarch
