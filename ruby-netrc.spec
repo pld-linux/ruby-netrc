@@ -11,6 +11,8 @@ License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
 # Source0-md5:	1322b2053484eec64992e00c7f71cd69
+Patch0:	https://github.com/glensc/netrc/commit/c4967ef0b3e6a9d4ffd491009e9caccdfb552a02.patch
+# Patch0-md5:	1f865973c16d590a8be9c6b69282e7dc
 URL:		https://github.com/geemus/netrc
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -35,8 +37,12 @@ Documentation for %{name}
 
 %prep
 %setup -q -n %{gem_name}-%{version}
+%patch0 -p1
 
 chmod 600 data/newlineless.netrc
+
+# cleanup backups after patching
+find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %build
 %if %{with tests}
