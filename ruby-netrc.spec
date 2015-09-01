@@ -6,7 +6,7 @@
 Summary:	Library to read and write netrc files
 Name:		ruby-%{pkgname}
 Version:	0.7.9
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
