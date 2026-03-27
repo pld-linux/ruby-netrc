@@ -5,12 +5,12 @@
 %define	pkgname netrc
 Summary:	Library to read and write netrc files
 Name:		ruby-%{pkgname}
-Version:	0.7.9
-Release:	2
+Version:	0.11.0
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	177ed2c83e6037aed863144a53a39021
+# Source0-md5:	eea1360cd1f601b6688722541f544d3e
 URL:		https://github.com/heroku/netrc
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.665
@@ -46,7 +46,7 @@ find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 %__gem_helper spec
 
 %if %{with tests}
-testrb -Ilib test
+%{__ruby} -Ilib -r rubygems -e 'Dir.glob("test/test_*.rb") { |f| require "./#{f}" }'
 %endif
 
 %install
